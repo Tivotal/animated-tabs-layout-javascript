@@ -1,0 +1,159 @@
+/* Created by Tivotal */
+
+/* Google Fonts(Poppins) */
+@import url("https://fonts.googleapis.com/css2?family=Nova+Round&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8e8e8;
+}
+
+.container {
+  width: 90%;
+  max-width: 750px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabs-container {
+  position: relative;
+  height: 50px;
+  background: #cfdbfc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tabs-container .btn {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background: none;
+  color: #000;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 1;
+}
+
+.tabs-container .indicator {
+  position: absolute;
+  width: calc(100% / 3);
+  height: 100%;
+  background: #fff;
+  left: 0;
+  top: 0;
+  transition: 0.3s linear;
+}
+
+.tabs-container .indicator::before,
+.tabs-container .indicator::after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  bottom: 0;
+}
+
+.tabs-container .indicator::before {
+  right: -20px;
+  border-bottom-left-radius: 15px;
+  box-shadow: -3px 5px 0 #fff;
+}
+
+.tabs-container .indicator::after {
+  left: -20px;
+  border-bottom-right-radius: 15px;
+  box-shadow: 3px 5px 0 #fff;
+}
+
+.content-container {
+  width: 100%;
+  padding: 20px 15px;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+}
+
+.content img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.content .text {
+  text-align: justify;
+}
+
+.content .text h1 {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #0034c4;
+}
+
+.content img,
+.content .text h1,
+.content .text p {
+  display: none;
+}
+
+.content.active img,
+.content.active .text h1,
+.content.active .text p {
+  display: block;
+  transform: translateY(-20px);
+  opacity: 0;
+  animation: showContent 0.6s ease forwards;
+}
+
+.content.active .text h1 {
+  animation-delay: 0.3s;
+}
+
+.content.active .text p {
+  animation-delay: 0.6s;
+}
+
+@keyframes showContent {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 620px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .content .text h1 {
+    text-align: center;
+  }
+}
